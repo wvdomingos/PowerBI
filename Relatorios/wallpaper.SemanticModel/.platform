@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "wallpaper"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fe537c6f-18d5-46af-a566-571eb68033c7"
+  }
+}

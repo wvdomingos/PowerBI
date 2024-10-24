@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBIDesktopVersion = 2.137.952.0 (24.10)
+
+annotation PBI_QueryOrder = ["Meta","Funcionário","Terceiros"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Meta
+ref table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
+ref table Funcionário
+ref table Terceiros
+
+ref cultureInfo pt-BR
+ref cultureInfo en-US
+

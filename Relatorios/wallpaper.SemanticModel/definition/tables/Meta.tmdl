@@ -1,0 +1,111 @@
+table Meta
+	lineageTag: 52baa0fa-ecd0-43dc-9aca-790c1c913c83
+
+	measure Inventario = DateDiff( TODAY(), DateValue("27/09/2024"), DAY)
+		formatString: 0
+		lineageTag: 092d0e75-54ff-434f-bdbc-4adc579bfee9
+
+	measure Texto = "Feliz Natal e Boas Festas!"
+		displayFolder: Textos
+		lineageTag: 23fcaed5-af8b-4ab6-8e6b-7bc6ce56a0f3
+
+	measure Protheus = DateDiff( TODAY(), DateValue("04/20/2024"), DAY)
+		formatString: 0
+		lineageTag: dc27cac5-2136-4c1c-b62a-476635753bf7
+
+	measure txPalestra = "Faltam " & [Protheus] & " dias para Palestra."
+		displayFolder: Textos
+		lineageTag: 0655dbc7-8dbd-4806-a772-8f3f73c8af89
+
+	measure txInventario = "Faltam " & [Inventario] & " dias p/ o Inventário do Almoxarifado."
+		displayFolder: Textos
+		lineageTag: 78d91b02-4d15-42bd-9336-f999787f37cb
+
+	measure Exposul = DateDiff( TODAY(), DateValue("04/05/2024"), DAY)
+		formatString: 0
+		lineageTag: 7e57bf1a-94fd-45c3-8ba2-691658a7102b
+
+	measure 'Total de Confirmados' = COUNTROWS(FILTER('Funcionário', 'Funcionário'[CONFIRMADO] = "SIM"))
+		formatString: 0
+		lineageTag: 95029db1-ef3d-491d-80da-40c4970eb10b
+
+	measure 'Total de Não Confirmados' = COUNTROWS(FILTER('Funcionário', 'Funcionário'[CONFIRMADO] = "NÃO"))
+		formatString: 0
+		lineageTag: b50ce2dd-c262-4a7e-bc79-bdef831b26ce
+
+	measure 'Total Trabalhando' = COUNTROWS(FILTER('Funcionário', 'Funcionário'[CONFIRMADO] = "TRABALHANDO"))
+		formatString: 0
+		lineageTag: 9f2fa717-c7a1-444a-82e4-76ce4196ddc7
+
+	measure 'Total Não Informado' = COUNTROWS(FILTER('Funcionário', ISBLANK('Funcionário'[CONFIRMADO])))
+		formatString: 0
+		lineageTag: 0fc63717-aceb-4fd0-85bc-002dda8fb585
+
+	measure 'Percentual Confirmados' = DIVIDE([Total de Confirmados], COUNTROWS('Funcionário'), 0)
+		formatString: 0%;-0%;0%
+		lineageTag: 836710cb-9b3c-47c8-9cc0-3eaaf0d145c1
+
+	measure 'Percentual Não Confirmados' = DIVIDE([Total de Não Confirmados], COUNTROWS('Funcionário'), 0)
+		formatString: 0%;-0%;0%
+		lineageTag: c09557c4-334c-4b04-b1bb-01850b0dbadc
+
+	measure 'Percentual Trabalhando' = DIVIDE([Total Trabalhando], COUNTROWS('Funcionário'), 0)
+		formatString: 0%;-0%;0%
+		lineageTag: e1ec62e6-044d-468e-9d8b-fe0f628818ae
+
+	measure 'Percentual Não Informado' = DIVIDE([Total Não Informado], COUNTROWS('Funcionário'), 0)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 51bbe714-eb50-4b14-92dd-98d2b20c71e5
+
+	measure txFestaFimDeAno = "Faltam " & [DtFestaFimDeAno] & " dias p/ a Confraternização de Fim de Ano."
+		displayFolder: Textos
+		lineageTag: c302fa18-0352-4ca7-91e5-00a3d953d9c1
+
+	measure txProtheus = "Faltam " & [Protheus] & " dias p/ Migração do Protheus 12.1.2310."
+		displayFolder: Textos
+		lineageTag: e2f60156-0ddf-4ab2-b554-874ea8bff534
+
+	measure DtFestaFimDeAno = DateDiff( TODAY(), DateValue("19/11/2024"), DAY)
+		formatString: 0
+		displayFolder: Textos
+		lineageTag: 6cfa02f7-af79-434f-b7e4-2f62f714c567
+
+	measure DtMissa = DateDiff( TODAY(), DateValue("22/10/2024"), DAY)
+		formatString: 0
+		displayFolder: Textos
+		lineageTag: 468b94bd-dc84-4667-874c-ccbf61aaa7f0
+
+	measure wallpaper = "https://raw.githubusercontent.com/wvdomingos/PowerBI/main/assets/wallpaper.jpg"
+		lineageTag: 47147359-aaf9-418e-b443-01f30913debf
+
+	measure Dummy = 1
+		formatString: 0
+		lineageTag: 28673e34-d0af-4cce-b2c2-d5a238aa5cd3
+
+	measure txMissa = "Faltam " & [DtMissa] & " dias p/ Missa de Aniversário Selita."
+		displayFolder: Textos
+		lineageTag: de733ecb-4590-4134-931f-d29bbcc524ea
+
+	measure DtPalestra = DateDiff( TODAY(), DateValue("10/08/2024"), DAY)
+		formatString: 0
+		displayFolder: Textos
+		lineageTag: d4150ee8-cdfe-407a-9e7b-0768a6017f33
+
+	measure txPalestra2 = "Faltam " & [DtPalestra] & " dias p/ a Palestra com a Drª Luciane Infantini."
+		displayFolder: Textos
+		lineageTag: 16e1433c-12ab-4fa8-bd20-4c6e3b6472de
+
+	partition Meta-473eebf9-cb01-4e7e-a7a7-01c88e89329e = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMjTVNzDXNzIwMlLSUVKKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Meta = _t, #"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Meta", type date}, {"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Removidas",{{"Meta", type date}}),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Tipo Alterado1",{"Meta"})
+				in
+				    #"Colunas Removidas1"
+
+	annotation PBI_ResultType = Table
+

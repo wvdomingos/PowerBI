@@ -1,0 +1,47 @@
+table Funcionário
+	lineageTag: bc5f9435-b448-4ec5-a6f6-cdd14faf09af
+
+	column NOME
+		dataType: string
+		lineageTag: b30d23b6-e40c-4cd7-ba63-d0942cc71488
+		summarizeBy: none
+		sourceColumn: NOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column GENERO
+		dataType: string
+		lineageTag: ec463f2b-7235-46fc-ab55-59eacbb575b6
+		summarizeBy: none
+		sourceColumn: GENERO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CC
+		dataType: string
+		lineageTag: 467e65c5-9c26-4458-bf33-ff73f8596864
+		summarizeBy: none
+		sourceColumn: CC
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONFIRMADO
+		dataType: string
+		lineageTag: 0e89dd97-0859-4556-b5c1-8f27a31fd5f2
+		summarizeBy: none
+		sourceColumn: CONFIRMADO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Funcionário = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\_MyFiles\COOPERATIVA DE LATICINIOS SELITA\Plano de Ação da Nova Sede - General\Festa Fim de Ano\Colaboradores Confirmados.xlsx"), null, true),
+				    Tabela1_Table = Fonte{[Item="Tabela1",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Tabela1_Table,{{"NOME", type text}, {"GENERO", type text}, {"CC", type text}, {"CONFIRMADO", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
