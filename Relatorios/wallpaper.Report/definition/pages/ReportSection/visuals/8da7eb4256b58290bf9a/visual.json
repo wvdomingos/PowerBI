@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.3.0/schema.json",
   "name": "8da7eb4256b58290bf9a",
   "position": {
-    "x": 1018.5896442409299,
-    "y": 564.11976047904193,
+    "x": 1074.8573441352589,
+    "y": 574.21909122930606,
     "z": 1000,
     "height": 106.76435364564988,
-    "width": 109.64987671715393,
+    "width": 141.39063050369847,
     "tabOrder": 1000
   },
   "visual": {
@@ -75,6 +75,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'https://www.selita.coop.br'"
+                }
+              }
+            },
+            "showDefaultTooltip": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
