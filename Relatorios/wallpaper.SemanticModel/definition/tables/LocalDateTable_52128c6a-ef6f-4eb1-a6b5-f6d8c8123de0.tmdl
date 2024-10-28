@@ -1,16 +1,16 @@
-table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
+table LocalDateTable_52128c6a-ef6f-4eb1-a6b5-f6d8c8123de0
 	isHidden
-	isPrivate
-	lineageTag: f7b28885-319c-456a-890f-9c4b9b3cc2da
+	showAsVariationsOnly
+	lineageTag: 03de0937-2569-4a26-bc46-941d0c5c5591
 
 	column Date
 		dataType: dateTime
 		isHidden
-		lineageTag: ebf14607-e65b-413a-a883-878f0407b814
+		formatString: General Date
+		lineageTag: e87362aa-108f-485b-b7d7-56f15930f348
 		dataCategory: PaddedDateTableDates
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: [Date]
 
 		annotation SummarizationSetBy = User
@@ -18,10 +18,10 @@ table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 	column Year = YEAR([Date])
 		dataType: int64
 		isHidden
-		lineageTag: 140993e3-5d0a-4a54-95c2-496465b23eda
+		formatString: 0
+		lineageTag: a08c0936-f381-4f61-8342-b6d7a2c74532
 		dataCategory: Years
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = User
 
@@ -30,10 +30,10 @@ table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 	column MonthNo = MONTH([Date])
 		dataType: int64
 		isHidden
-		lineageTag: 15284c00-d800-4988-8f15-a06bd621f9a4
+		formatString: 0
+		lineageTag: d2f3323f-82de-466f-9054-79924578dfec
 		dataCategory: MonthOfYear
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = User
 
@@ -42,10 +42,9 @@ table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 	column Month = FORMAT([Date], "MMMM")
 		dataType: string
 		isHidden
-		lineageTag: b367203f-5b92-40ee-9196-e6e09781a479
+		lineageTag: a6dfdf92-39cc-48eb-b703-4d6a9d096ca2
 		dataCategory: Months
 		summarizeBy: none
-		isDataTypeInferred
 		sortByColumn: MonthNo
 
 		annotation SummarizationSetBy = User
@@ -55,10 +54,10 @@ table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 	column QuarterNo = INT(([MonthNo] + 2) / 3)
 		dataType: int64
 		isHidden
-		lineageTag: 98e56ca8-5cb6-4630-8da2-1d902b0bcf12
+		formatString: 0
+		lineageTag: 4260cf9e-5c5d-4795-83c8-427e434ce345
 		dataCategory: QuarterOfYear
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = User
 
@@ -67,10 +66,9 @@ table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 	column Quarter = "Qtr " & [QuarterNo]
 		dataType: string
 		isHidden
-		lineageTag: 5f4f87b6-be7b-48d0-8450-c0d1cb6f8f79
+		lineageTag: 2438d64a-528c-487b-969c-655a2a080682
 		dataCategory: Quarters
 		summarizeBy: none
-		isDataTypeInferred
 		sortByColumn: QuarterNo
 
 		annotation SummarizationSetBy = User
@@ -80,41 +78,39 @@ table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 	column Day = DAY([Date])
 		dataType: int64
 		isHidden
-		lineageTag: fa8e7934-4e4a-4ff0-a722-d79847429a06
+		formatString: 0
+		lineageTag: df30fc17-ecd5-47a7-a30a-5ca5834cb367
 		dataCategory: DayOfMonth
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = User
 
 		annotation TemplateId = Day
 
 	hierarchy 'Date Hierarchy'
-		lineageTag: 11062633-7e62-49f0-8ce5-368261e00d92
+		lineageTag: ea78e556-9c62-4234-8c4f-e663bf83ba42
 
 		level Year
-			lineageTag: a16b9809-b23b-43f6-9ded-5cccc607be20
+			lineageTag: f1f81b4e-bc1a-4b5a-9666-75fb7098dad4
 			column: Year
 
 		level Quarter
-			lineageTag: e432914e-5603-43cb-8a82-29b86c776180
+			lineageTag: 71c00460-8487-4ac7-a2be-657b48026284
 			column: Quarter
 
 		level Month
-			lineageTag: f21c1e94-2ecc-4aff-a4be-79b89366dc66
+			lineageTag: 75adfd82-18a3-486f-8a9c-a306ccdbd89e
 			column: Month
 
 		level Day
-			lineageTag: 4a824f90-18f5-4762-9102-9c5ab65d14b8
+			lineageTag: 628b269c-8c9b-4db5-b88e-32c237ed17c3
 			column: Day
 
 		annotation TemplateId = DateHierarchy
 
-	partition DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415-4e11152c-6587-4446-a39a-a62af8d72832 = calculated
+	partition LocalDateTable_52128c6a-ef6f-4eb1-a6b5-f6d8c8123de0 = calculated
 		mode: import
-		source = Calendar(Date(2015,1,1), Date(2015,1,1))
+		source = Calendar(Date(Year(MIN('fFesta'[Data compra])), 1, 1), Date(Year(MAX('fFesta'[Data compra])), 12, 31))
 
-	annotation __PBI_TemplateDateTable = true
-
-	annotation DefaultItem = DateHierarchy
+	annotation __PBI_LocalDateTable = true
 

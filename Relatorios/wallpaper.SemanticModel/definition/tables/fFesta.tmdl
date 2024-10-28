@@ -1,0 +1,122 @@
+table fFesta
+	lineageTag: d6a51cc8-1c5d-4546-bf3f-c3b61436df4d
+
+	column 'Nº ingresso'
+		dataType: string
+		lineageTag: 98668580-1c43-40cd-b920-e17e052c00ea
+		summarizeBy: none
+		sourceColumn: Nº ingresso
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: c8280b14-bc92-4b3b-87c3-e1d9e07ea90d
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sobrenome
+		dataType: string
+		lineageTag: 185d8561-c604-433d-9a9c-21bf4cb2895a
+		summarizeBy: none
+		sourceColumn: Sobrenome
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data compra'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 58ae3091-43a1-4b06-a498-c83d20a97d81
+		summarizeBy: none
+		sourceColumn: Data compra
+
+		variation Variation
+			isDefault
+			relationship: 662d0e04-2d93-4c18-b673-7384772f0fef
+			defaultHierarchy: LocalDateTable_52128c6a-ef6f-4eb1-a6b5-f6d8c8123de0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº pedido'
+		dataType: string
+		lineageTag: fde4c7ac-be06-4a20-9fed-7e1c791d9dda
+		summarizeBy: none
+		sourceColumn: Nº pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estado de pagamento'
+		dataType: string
+		lineageTag: 66003190-b7d6-459b-a90e-427cfad5e2a1
+		summarizeBy: none
+		sourceColumn: Estado de pagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo:
+		dataType: string
+		lineageTag: 87f093ac-90c8-485d-9586-38e5cd4b8da8
+		summarizeBy: none
+		sourceColumn: Tipo:
+
+		annotation SummarizationSetBy = Automatic
+
+	column Telefone
+		dataType: string
+		lineageTag: e02bc622-c76a-4b09-90bb-dd85f2e8790e
+		summarizeBy: none
+		sourceColumn: Telefone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Você utilizará o transporte disponibilizado pela Cooperativa?'
+		dataType: string
+		lineageTag: b1301279-823d-4c28-9592-7ee0c7fd376b
+		summarizeBy: none
+		sourceColumn: Você utilizará o transporte disponibilizado pela Cooperativa?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Completo'
+		dataType: string
+		lineageTag: 1fa9cfc0-ff58-4aa6-913f-ab0d5db64c5e
+		summarizeBy: none
+		sourceColumn: Nome Completo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 09343a63-bf69-4229-ac0c-75c9004a9eba
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: a4d1afe5-3b60-4622-a601-cffc0d088493
+			defaultHierarchy: LocalDateTable_3f54932a-d4fb-4575-95c2-e73d11762e9a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fFesta = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\_MyFiles\OneDrive - COOPERATIVA DE LATICINIOS SELITA\_SELITA\86 anos Selita\Lista de participantes.xlsx"), null, true),
+				    Tabela1_Table = Fonte{[Item="Tabela1",Kind="Table"]}[Data],
+				    #"Colunas Removidas" = Table.RemoveColumns(Tabela1_Table,{"Ordem de inscrição", "Data Check-in (*)", "Codigo Desconto", "UTM_Source", "UTM_Medium", "UTM_Campaign", "UTM_Term", "UTM_Content", "User_Agent", "Referrer", "PDV", "Email", "Check-in", "Método de pagamento", "Tipo de ingresso", "Valor"}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Colunas Removidas", "Nome Completo", each Text.Combine({[Nome], [Sobrenome]}, " "), type text),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna Mesclada Inserida",{{"Nº ingresso", type text}, {"Nome", type text}, {"Sobrenome", type text}, {"Nº pedido", type text}, {"Estado de pagamento", type text}, {"Tipo:", type text}, {"Telefone", type text}, {"Você utilizará o transporte disponibilizado pela Cooperativa?", type text}, {"Data compra", type datetime}}),
+				    #"Data Inserida" = Table.AddColumn(#"Tipo Alterado", "Data", each DateTime.Date([Data compra]), type date)
+				in
+				    #"Data Inserida"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -8,16 +8,19 @@ model Model
 
 annotation PBIDesktopVersion = 2.137.952.0 (24.10)
 
-annotation PBI_QueryOrder = ["Meta","Funcionário","Terceiros"]
+annotation PBI_QueryOrder = ["Meta","Funcionário","Terceiros","fFesta"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table Meta
-ref table DateTableTemplate_b2cc007c-62e2-4976-bb10-bb6af62dd415
 ref table Funcionário
 ref table Terceiros
+ref table fFesta
+ref table DateTableTemplate_639064a3-b7b7-49a7-b7ad-aaaed2f703b8
+ref table LocalDateTable_52128c6a-ef6f-4eb1-a6b5-f6d8c8123de0
+ref table LocalDateTable_3f54932a-d4fb-4575-95c2-e73d11762e9a
 
 ref cultureInfo pt-BR
 ref cultureInfo en-US

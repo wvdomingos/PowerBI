@@ -1,10 +1,5 @@
 {
   "version": "1.1",
   "userConsent": {},
-  "remoteArtifacts": [
-    {
-      "datasetId": "f5e3a3fa-b566-47a9-bc4e-4ba4cf98393e"
-    }
-  ],
-  "securityBindingsSignature": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3RT2AAl0RUSFxogAqDsMegAAAAACAAAAAAADZgAAwAAAABAAAAAOQRZiwa0WYxuBHEAO22dmAAAAAASAAACgAAAAEAAAAKzeyIpRU4udfAg86yX+WEdIAAAAKk9r7qmVx2jS/98CobWunz/UUxxq+SUhRE7dcbggHK4U2OVQ6mB+wGbXz9b6dlMbQikyU+JCDGPQGEf+olrq7yhivNqUHJPbFAAAAOsdxtt3nqC7PvgkW4s86YafXP66"
+  "securityBindingsSignature": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3RT2AAl0RUSFxogAqDsMegAAAAACAAAAAAADZgAAwAAAABAAAADBkIb5YgQuHMx2nRJrd2TBAAAAAASAAACgAAAAEAAAAN2hBrccDD5EmKDXZzWKyaBIAAAA6fzfCzt4Bt9eFoAbh7Um+AKN8JCVmWSrJ4goUndFo8UeCckRxHaBMfyajzSV166p0P0T3+/ItLe3t3hZQtmcDc4GxzGM3ivXFAAAAJsw9qHWKmdDoBm/deNGyu6TsRMc"
 }

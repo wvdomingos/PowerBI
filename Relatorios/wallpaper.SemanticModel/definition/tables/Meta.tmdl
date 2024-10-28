@@ -95,6 +95,21 @@ table Meta
 		displayFolder: Textos
 		lineageTag: 16e1433c-12ab-4fa8-bd20-4c6e3b6472de
 
+	measure TotalParticipantes = DISTINCTCOUNT(fFesta[Nº ingresso])
+		formatString: 0
+		displayFolder: Festa
+		lineageTag: 05bb5e6a-a16f-4cf9-b322-559ef6819567
+
+	measure 'Precisa de Transporte' =
+			
+			CALCULATE(
+			    COUNT(fFesta[Nº ingresso]),
+			    fFesta[Você utilizará o transporte disponibilizado pela Cooperativa?] = "Sim"
+			)
+		formatString: 0
+		displayFolder: Festa
+		lineageTag: 55ba46c1-ef3a-4647-9de8-3cd92e0b308d
+
 	partition Meta-473eebf9-cb01-4e7e-a7a7-01c88e89329e = m
 		mode: import
 		source =
@@ -108,4 +123,6 @@ table Meta
 				    #"Colunas Removidas1"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

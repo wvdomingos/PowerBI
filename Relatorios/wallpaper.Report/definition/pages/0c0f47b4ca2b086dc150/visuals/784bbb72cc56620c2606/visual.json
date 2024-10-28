@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.3.0/schema.json",
+  "name": "784bbb72cc56620c2606",
+  "position": {
+    "x": 21.641423036280379,
+    "y": 21.641423036280379,
+    "z": 1001,
+    "height": 170.24586121873898,
+    "width": 657.89926030292361,
+    "tabOrder": 1001
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Meta"
+                    }
+                  },
+                  "Property": "TotalParticipantes"
+                }
+              },
+              "queryRef": "Meta.TotalParticipantes",
+              "nativeQueryRef": "TotalParticipantes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Meta"
+                    }
+                  },
+                  "Property": "Precisa de Transporte"
+                }
+              },
+              "queryRef": "Meta.ParticipantesComTransporte",
+              "nativeQueryRef": "Precisa de Transporte"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Meta"
+                  }
+                },
+                "Property": "TotalParticipantes"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

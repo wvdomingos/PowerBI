@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 568,
-            "y": 24
+            "y": 86
           },
           "nodeIndex": "Meta",
           "size": {
@@ -23,7 +23,7 @@
         {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 62
           },
           "nodeIndex": "Funcionário",
           "nodeLineageTag": "bc5f9435-b448-4ec5-a6f6-cdd14faf09af",
@@ -36,12 +36,25 @@
         {
           "location": {
             "x": 284,
-            "y": 0
+            "y": 62
           },
           "nodeIndex": "Terceiros",
           "nodeLineageTag": "04ebbfcb-0243-4369-973f-9bf513e980f3",
           "size": {
             "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 0
+          },
+          "nodeIndex": "fFesta",
+          "nodeLineageTag": "d6a51cc8-1c5d-4546-bf3f-c3b61436df4d",
+          "size": {
+            "height": 300,
             "width": 234
           },
           "zIndex": 0

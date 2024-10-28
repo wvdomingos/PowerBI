@@ -1,0 +1,10 @@
+relationship 662d0e04-2d93-4c18-b673-7384772f0fef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fFesta.'Data compra'
+	toColumn: LocalDateTable_52128c6a-ef6f-4eb1-a6b5-f6d8c8123de0.Date
+
+relationship a4d1afe5-3b60-4622-a601-cffc0d088493
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fFesta.Data
+	toColumn: LocalDateTable_3f54932a-d4fb-4575-95c2-e73d11762e9a.Date
+
