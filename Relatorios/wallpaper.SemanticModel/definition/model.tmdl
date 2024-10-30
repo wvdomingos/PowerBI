@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBIDesktopVersion = 2.137.952.0 (24.10)
+annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
 
 annotation PBI_QueryOrder = ["Meta","Funcionário","Terceiros","fFesta"]
 
